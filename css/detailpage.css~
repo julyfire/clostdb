@@ -1,0 +1,107 @@
+
+#content {
+	width: 70%;
+	float: left;
+	margin-bottom: 44px;
+	font-size: 12px;
+}
+
+#sidebar {
+	width: 23%; 
+	padding: 20px;
+	float: right;
+	border: 1px solid #dcdcdc;
+	margin-bottom: 44px
+}
+
+#sidebar h3, .sidebar_box {
+	background: #eaeaea; 
+	padding: 5px 10px; 
+	margin-bottom: 15px;
+	border: 1px solid #FFF;
+	outline:1px solid #dcdcdc;
+}
+
+/* sidebar menu */
+
+
+.navcontainer { width: auto; margin-bottom: 25px }
+
+.navcontainer ul{
+	margin-left: 0;
+	padding-left: 0;
+	list-style-type: none;
+}
+
+.navcontainer li{
+	display: block;
+	padding: 10px 0;
+	width: auto;
+	background: url(../images/seperator.png) repeat-x bottom;
+}
+.navcontainer .link li{
+	padding-left: 10px;
+}
+.navcontainer a:link, .navlist a:visited {
+	text-decoration: none;
+}
+
+.navcontainer a:hover{
+	color: #000;
+}
+
+#cview{
+	margin-top: 10px;
+}
+
+
+/* end sidebar menu */
+
+table.t2{
+    margin:20px auto;
+    font-size:12px;
+    width: 100%;
+    color:#666;
+    line-height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+     -webkit-box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+	      -moz-box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+	           box-shadow: 0 2px 3px rgba(78, 68, 60, 0.3);
+}
+table.t2 th {
+
+    background-color: #ddd;
+    border-bottom:1px solid #eaeaea;
+    padding:0 1em 0;
+    text-align: left;
+    vertical-align: top;
+}
+table.t2 td{
+    padding:0 1em 0;
+    border-bottom:1px solid #eaeaea;
+}
+span.pos{
+	width: 55px;
+	display:inline-block;
+}
+td#feat{
+	padding:0;
+}
+div.feat{
+	padding:0 1em 0;
+}
+.odd {
+	background-color: #eaeaea;
+}
+.handle{
+	margin: 0;
+	padding: 0;
+}
+.handle .button{
+	border:1px outset #aeb3b6;
+	background-color:#ddd;
+	height:25px;
+	margin-right:10px;
+	text-align:center;
+}
+

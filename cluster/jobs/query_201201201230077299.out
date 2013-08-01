@@ -1,0 +1,158 @@
+BLASTN 2.2.20 [Feb-08-2009]
+
+Reference: Altschul, Stephen F., Thomas L. Madden, Alejandro A. Schaffer, 
+Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), 
+"Gapped BLAST and PSI-BLAST: a new generation of protein database search
+programs",  Nucleic Acids Res. 25:3389-3402.
+Query= query
+         (967 letters)
+
+Database: clostridium.fasta 
+           44,639 sequences; 1,205,412,229 total letters
+
+
+
+                                                                 Score    E
+Sequences producing significant alignments:                      (bits) Value
+
+gb|ADLN01000078.1| Clostridium hathewayi WAL-18680 cont1.78, who...    40   0.94 
+ref|NZ_ADLN01000078.1| Clostridium hathewayi WAL-18680 cont1.78,...    40   0.94 
+ref|NZ_JH379027.1| Clostridium hathewayi WAL-18680 genomic scaff...    40   0.94 
+gb|JH379027.1| Clostridium hathewayi WAL-18680 genomic scaffold ...    40   0.94 
+
+>gb|ADLN01000078.1| Clostridium hathewayi WAL-18680 cont1.78, whole genome shotgun
+            sequence
+          Length = 58127
+
+ Score = 40.1 bits (20), Expect = 0.94
+ Identities = 20/20 (100%)
+ Strand = Plus / Plus
+
+                                
+Query: 526  ggcgggatggctcctgtctc 545
+            ||||||||||||||||||||
+Sbjct: 4187 ggcgggatggctcctgtctc 4206
+
+
+>ref|NZ_ADLN01000078.1| Clostridium hathewayi WAL-18680 cont1.78, whole genome shotgun
+            sequence
+          Length = 58127
+
+ Score = 40.1 bits (20), Expect = 0.94
+ Identities = 20/20 (100%)
+ Strand = Plus / Plus
+
+                                
+Query: 526  ggcgggatggctcctgtctc 545
+            ||||||||||||||||||||
+Sbjct: 4187 ggcgggatggctcctgtctc 4206
+
+
+>ref|NZ_JH379027.1| Clostridium hathewayi WAL-18680 genomic scaffold supercont1.1, whole genome
+               shotgun sequence
+          Length = 3507896
+
+ Score = 40.1 bits (20), Expect = 0.94
+ Identities = 20/20 (100%)
+ Strand = Plus / Plus
+
+                                   
+Query: 526     ggcgggatggctcctgtctc 545
+               ||||||||||||||||||||
+Sbjct: 3242909 ggcgggatggctcctgtctc 3242928
+
+
+>gb|JH379027.1| Clostridium hathewayi WAL-18680 genomic scaffold supercont1.1, whole genome
+               shotgun sequence
+          Length = 3507896
+
+ Score = 40.1 bits (20), Expect = 0.94
+ Identities = 20/20 (100%)
+ Strand = Plus / Plus
+
+                                   
+Query: 526     ggcgggatggctcctgtctc 545
+               ||||||||||||||||||||
+Sbjct: 3242909 ggcgggatggctcctgtctc 3242928
+
+
+  Database: clostridium.fasta
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,119,807
+  Number of sequences in database:  2940
+  
+  Database: /data/db/blast/clostridium.fasta.001
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,118,649
+  Number of sequences in database:  2957
+  
+  Database: /data/db/blast/clostridium.fasta.002
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 77,601,756
+  Number of sequences in database:  2354
+  
+  Database: /data/db/blast/clostridium.fasta.003
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,119,473
+  Number of sequences in database:  2497
+  
+  Database: /data/db/blast/clostridium.fasta.004
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,119,453
+  Number of sequences in database:  2162
+  
+  Database: /data/db/blast/clostridium.fasta.005
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,118,956
+  Number of sequences in database:  3225
+  
+  Database: /data/db/blast/clostridium.fasta.006
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,118,642
+  Number of sequences in database:  2601
+  
+  Database: /data/db/blast/clostridium.fasta.007
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,119,006
+  Number of sequences in database:  3361
+  
+  Database: /data/db/blast/clostridium.fasta.008
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,121,696
+  Number of sequences in database:  2388
+  
+  Database: /data/db/blast/clostridium.fasta.009
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,120,046
+  Number of sequences in database:  2365
+  
+  Database: /data/db/blast/clostridium.fasta.010
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,119,026
+  Number of sequences in database:  3725
+  
+  Database: /data/db/blast/clostridium.fasta.011
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,276,773
+  Number of sequences in database:  2721
+  
+  Database: /data/db/blast/clostridium.fasta.012
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,123,761
+  Number of sequences in database:  4149
+  
+  Database: /data/db/blast/clostridium.fasta.013
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,118,747
+  Number of sequences in database:  2827
+  
+  Database: /data/db/blast/clostridium.fasta.014
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,120,409
+  Number of sequences in database:  2301
+  
+  Database: /data/db/blast/clostridium.fasta.015
+    Posted date:  Dec 19, 2011  8:14 PM
+  Number of letters in database: 75,976,029
+  Number of sequences in database:  2066
+  

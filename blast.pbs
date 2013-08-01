@@ -1,0 +1,7 @@
+#!/bin/bash
+#PBS -o /home/wdj/b8/output
+#PBS -e /home/wdj/b8/error
+#PBS -l nodes=2:ppn=4
+#PBS -l walltime=240:00:00
+#PBS -l mem=4gb
+#PBS -V

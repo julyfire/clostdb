@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+table{
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	background-color: #efefef;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 2.0em;
+	font-size: 13px;
+	color: #55595c;
+}
+th {
+	text-align: left;
+	padding: 5px 10px;
+	width: 200px;
+}
+td {
+	padding: 5px 10px;
+}
+.sector{
+	border: 1px solid #ccc;
+}
+em{
+	display:block;
+	color:#C33;
+	font-size:11px;
+}
+#blast .button{
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	padding:2px 3px;
+}
+.toggle{
+	width:130px;
+	margin-bottom:10px;
+}
+#blast .go{
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	color: #555;
+	border:1px outset #aeb3b6;
+	background-color:#ddd;
+	width:60px;
+	height:25px;
+	text-align:center;
+	float:right;
+}
+form.blast{
+	margin:20px 0 40px 0;
+}
+#main{
+	margin-bottom: 50px;
+}
+/* toggle */
+.expand  { display:; visibility:visible;}
+.collapse  { display:none; visibility:collapse;}

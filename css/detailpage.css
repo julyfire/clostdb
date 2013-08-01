@@ -1,0 +1,58 @@
+
+#content {
+	background:#f7f7f7;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3,Direction=135,Color='#cccccc')"; /*ie 8*/
+   filter:progid:DXImageTransform.Microsoft.Shadow(color=#cccccc,direction=135,strength=3);/*ie 5.5-7*/
+    -webkit-box-shadow: 2px 2px 3px rgba(78, 68, 60, 0.3);/*safari or chrome*/
+          -moz-box-shadow: 2px 2px 3px rgba(78, 68, 60, 0.3);/*firefox*/
+               box-shadow: 2px 2px 3px rgba(78, 68, 60, 0.3);/*opera or ie9*/
+}
+
+
+table.t2{
+    margin:20px auto 0;
+    font-size:12px;
+    width: 100%;
+    color:#666;
+    line-height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+table.t2 th {
+
+    background-color: #ddd;
+    border-bottom:1px solid #eaeaea;
+    padding:0 1em 0;
+    text-align: left;
+    vertical-align: top;
+}
+table.t2 td{
+    padding:0 1em 0;
+    border-bottom:1px solid #eaeaea;
+}
+span.pos{
+	width: 55px;
+	display:inline-block;
+}
+td#feat{
+	padding:0;
+}
+div.feat{
+	padding:0 1em 0;
+}
+.odd {
+	background-color: #eaeaea;
+}
+.handle{
+	margin: 0;
+	padding: 0;
+}
+.handle .button{
+	border:1px outset #aeb3b6;
+	background-color:#ddd;
+	height:25px;
+	margin-right:10px;
+	text-align:center;
+}
+pre{
+	font-size: 12px;
+}

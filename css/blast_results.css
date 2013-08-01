@@ -1,0 +1,139 @@
+#main{
+	background-color: #d0d0d0;
+	padding:10px;	
+}
+#jobtitle{
+	font-size: 1.5em;
+	font-weight: bold;
+	padding: 10px 0;
+	border-bottom: 1px solid #808080;
+}
+.blast_panel{
+	margin: 10px;
+	padding: 20px 10px;
+	border: 1px solid #c7c7c7;
+	background-color: #eaeaea;	
+	font-family:Verdana,Arial,Sans-Serif;
+}
+.blast_title{
+	margin: 10px;
+	font-family:Verdana,Arial,Sans-Serif;
+	font-weight: bold;
+}
+#blast_summary{
+	padding:1em 0.5em;
+	font-family:Verdana,Arial,Sans-Serif;
+	font-size:90%;
+	border-bottom: 1px solid #808080;
+}
+#query_summary{
+	float:left;
+	padding:0pt;
+	width:49%;
+}
+#db_summary{
+	margin-left:51%;
+	padding:0pt;
+}
+#blast_summary dl {
+margin:0pt 0pt 0.5em;
+padding:0pt;
+}
+#blast_summary dt, #blast_summary dd {
+line-height:1.4em;
+}
+#blast_summary dt {
+float:left;
+font-weight:bold;
+text-align:right;
+width:10em;
+margin-top:0;
+}
+#blast_summary dd {
+margin-left:11em;
+white-space:normal !important;
+}
+
+table.brief{
+	font-family: Verdana, Sans-Serif;
+	font-size: 80%;
+	_font-size: 86%;
+	border-collapse: collapse;
+	width: 100%;
+	border-bottom:1px solid #808080;
+	background-color: #fff;
+}
+table.brief caption
+{
+font-weight:bold;
+text-align:left;    
+}
+
+table.brief th a {
+/*text-decoration: none;*/
+color: #00c;
+}
+
+table.brief th a:visited {
+color: #00c;
+}
+
+table.brief th a:hover {
+	position: relative;
+	text-decoration: underline;
+}
+table.brief tr th.l,
+table.brief tr td.l {
+text-align: left;
+}
+
+table.brief tr th,
+table.brief tr td {
+text-align: center;
+padding: 1px 4px;
+}
+
+table.brief tr.first th {
+padding-left:18px;
+border: solid 1px #808080;
+border-left-color: #ccc;
+padding-right: 8px;
+padding-bottom: 3px;
+background-color: #d0d0d0;
+white-space:normal;
+line-height: 1.2em
+}
+
+
+table.brief td {
+border: solid 1px #ccc;
+border-width: 0px 1px;
+white-space:nowrap;
+overflow: hidden;
+}
+
+
+table.brief tr:hover {
+background-color: #eaeaea;
+}
+
+div.aln {
+	background-color: #fff;
+	border: solid 1px #ccc;
+	margin-bottom: 10px;
+	padding: 20px 10px;
+}
+#blast_info{
+	/*display: none;*/
+}
+#handle{
+	margin-bottom:20px;
+}
+.button{
+	margin-left:10px;
+	background-color:#efefef;
+}
+
+/* toggle */
+.expand  { display:block;}
+.collapse  { display:none;}

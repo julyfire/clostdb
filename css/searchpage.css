@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#search_form {
+	margin:30px 0;
+	background-color: #f7f7f7;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3,Direction=135,Color='#cccccc')"; /*ie 8*/
+   filter:progid:DXImageTransform.Microsoft.Shadow(color=#cccccc,direction=135,strength=3);/*ie 5.5-7*/
+    -webkit-box-shadow: 2px 2px 3px rgba(78, 68, 60, 0.3);/*safari or chrome*/
+          -moz-box-shadow: 2px 2px 3px rgba(78, 68, 60, 0.3);/*firefox*/
+               box-shadow: 2px 2px 3px rgba(78, 68, 60, 0.3);/*opera or ie9*/
+}
+
+table{
+	width:960px;
+	margin:0 auto;
+	text-align: left;
+	border-spacing: 0px;
+	border: 1px solid #aeb3b6;
+	border-collapse: collapse;
+
+}
+table, tr, th, td, form #search_list
+{
+   	font-family: Arial, Helvetica, sans-serif;
+	line-height: 2.0em;
+	font-size: 13px;
+	color: #55595c;
+	vertical-align: top;
+}
+
+
+tr.odd{
+	background-color:#ddd;
+
+}
+th{
+	width:200px;
+	padding:10px;
+	border-bottom: 1px dotted #aeb3b6;
+}
+td{
+	padding:10px;
+	/*color: #FF8E1C;*/
+	border-bottom: 1px dotted #aeb3b6;
+	padding-right: 0.5em;
+
+}
+td #do{
+	float:right;
+}
+
+.text{
+	height:20px;
+}
+	
+.selectbox{
+	text-align:left; 
+	width:504px; 
+	background-color:#aeb3b6;
+}
+.selecthead{ 
+	width:500px; 
+	height:20px; 
+	display:block; 
+	z-index:100; 
+	border:1px solid #aeb3b6; 
+	margin:0 auto;
+}
+.select{
+	width:502px; 
+	display:block;
+	text-align:left; 
+	z-index:1;
+	background-color:#ddd; 
+	border:1px solid #aeb3b6; 
+	margin:0 auto;  
+}
+.select option{
+	color:#565656;
+}
+
+#search_list .button{
+	border:1px outset #aeb3b6;
+	background-color:#ddd;
+	width:60px;
+	height:25px;
+	margin-left:10px;
+	text-align:center;
+}

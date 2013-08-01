@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+<title>Simon Lab</title>
+
+<script type="text/javascript" src="jquery.js"></script>
+<!-- Begin DropDown -->
+      
+<script type="text/javascript">
+$(function(){
+   $("ul.dropdown li").hover(function(){
+        $(this).addClass("hover");
+        $('ul:first',this).css('visibility', 'visible');
+    
+    }, function(){
+   $(this).removeClass("hover");
+   $('ul:first',this).css('visibility', 'hidden');
+});
+$("ul.dropdown li ul li:has(ul)").find("a:first").append(" &raquo; ");
+});
+</script> 
+
+</head>
+
+<body>
+
+<div id="header">
+	<div id="social">
+  		<span><a href="#">中文</a>|<a href="#">English</a></span>
+  		<span><a href="#">Help</a></span>
+        <span><a href="#">Login</a></span>
+  		<!--<a href="#"><img src="images/email.png" width="26" height="26" alt="email" /></a>-->
+	</div>
+    <form action="" method="post" id="search">
+			<div class="field-holder">
+				<input type="text" class="field" value="Search" title="Search" />
+			</div>
+			<input type="submit" class="button" value="Search" />
+			<div class="cl">&nbsp;</div>
+	</form>
+</div>
+
+
+
+<ul class="dropdown"><!-- menu -->
+
+  <li><a href="index.html">Home</a></li>
+    
+	<li><a href="#">Databases</a>
+		<ul class="sub_menu">
+    		<li><a href="#">Rabies</a></li>
+        	<li><a href="#">Flavivirus</a></li>
+            <li><a href="#">Influenza</a></li>
+            <li><a href="#">Baculovirus</a></li>
+    	</ul>
+	</li>
+    
+	<li><a href="#">Tools</a>
+		<ul class="sub_menu">
+    		<li><a href="#">BLAST</a></li>
+        	<li><a href="#">Alignment</a></li>
+    	</ul>
+	</li>
+    
+	<li><a href="page.html">Blog</a></li>
+    
+	<li><a href="#">About</a></li>
+    
+</ul><!-- close menu -->
+
+
+<!-- ================================== main content start ===================================== -->
+<div id="content"><!-- content -->
+
+<h1>Page Heading</h1> 
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum pellentesque dui, id consequat quam pharetra eget. Aliquam erat volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur vitae felis quis mi ultrices vestibulum a eget nibh. Proin commodo felis malesuada mauris aliquam vitae mattis magna accumsan. Duis ut magna tortor. Suspendisse at orci non tortor sollicitudin hendrerit. Etiam iaculis sagittis risus ut aliquam. Praesent mi ipsum, consectetur et dignissim in, pharetra vitae nunc. Morbi laoreet tortor varius ante aliquet fringilla. Donec at pulvinar metus. Donec consequat libero nec ante vehicula sit amet congue nibh ultrices. Praesent in augue tortor, ac feugiat leo. Aenean blandit aliquam viverra. Cras justo magna, porttitor eu pellentesque ut, euismod ut nunc. Curabitur lectus neque, accumsan vel consectetur non, consectetur vel ligula. Fusce imperdiet placerat hendrerit. Nam sed orci est, nec semper nunc.</p>
+
+<h2>Heading Two</h2>
+
+<p>Proin interdum lobortis venenatis. Donec ac felis accumsan arcu ultricies consequat imperdiet non felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec pharetra viverra orci, eget facilisis nibh congue nec. Mauris at sem at arcu auctor pellentesque. Maecenas a lacus mauris, id varius leo. Maecenas leo risus, suscipit vel consequat eget, vulputate et quam. Etiam dignissim nunc nec lectus facilisis malesuada. Donec mauris est, feugiat sit amet sodales et, dapibus suscipit quam. Morbi dapibus erat cursus mi rutrum non condimentum erat blandit. Sed ornare risus at nulla porttitor luctus.</p>
+
+<h2>Heading Two</h2>
+
+<p>Proin interdum lobortis venenatis. Donec ac felis accumsan arcu ultricies consequat imperdiet non felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec pharetra viverra orci, eget facilisis nibh congue nec. Mauris at sem at arcu auctor pellentesque. Maecenas a lacus mauris, id varius leo. Maecenas leo risus, suscipit vel consequat eget, vulputate et quam. Etiam dignissim nunc nec lectus facilisis malesuada. Donec mauris est, feugiat sit amet sodales et, dapibus suscipit quam. Morbi dapibus erat cursus mi rutrum non condimentum erat blandit. Sed ornare risus at nulla porttitor luctus.</p> 
+
+<h2>Heading Two</h2>
+
+<p>Proin interdum lobortis venenatis. Donec ac felis accumsan arcu ultricies consequat imperdiet non felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec pharetra viverra orci, eget facilisis nibh congue nec. Mauris at sem at arcu auctor pellentesque. Maecenas a lacus mauris, id varius leo. Maecenas leo risus, suscipit vel consequat eget, vulputate et quam. Etiam dignissim nunc nec lectus facilisis malesuada. Donec mauris est, feugiat sit amet sodales et, dapibus suscipit quam. Morbi dapibus erat cursus mi rutrum non condimentum erat blandit. Sed ornare risus at nulla porttitor luctus.</p>  
+                        
+</div><!-- end content -->
+
+
+<div id="sidebar"><!-- sidebar -->
+
+<h3>Recent</h3>
+
+    <div class="navcontainer">
+    <ul>
+    <li><a href="#">Lorem ipsum dolor</a></li>
+    <li><a href="#">Maecenas leo risus</a></li>
+    <li><a href="#">Donec ac felis</a></li>
+    <li><a href="#">Proin interdum</a></li>
+    <li><a href="#">Morbi dapibus erat</a></li>
+    </ul>
+    </div>
+
+<h3>Archive</h3>
+
+    <div class="navcontainer">
+    <ul>
+    <li><a href="#">February</a></li>
+    <li><a href="#">January</a></li>
+    <li><a href="#">December</a></li>
+    <li><a href="#">November</a></li>
+    <li><a href="#">October</a></li>
+    </ul>
+    </div>
+    
+<h3>Some Text</h3>
+
+<p>Proin interdum lobortis venenatis. Donec ac felis accumsan arcu ultricies consequat imperdiet non felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+
+<h3>Text in a box</h3>
+
+<p class="sidebar_box">
+Donec ac felis accumsan arcu ultricies consequat imperdiet non felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+</p>
+
+</div><!-- end sidebar -->
+
+
+<!-- =================================== main content end ======================================== -->
+
+<div id="footer">
+Organizer:bureau of Life Science and Biotechnology Chinese Academy of Sciences<br />
+<a href="http://www.whiov.ac.cn">Wuhan Institute of Virology Chinese Academy of Sciences</a><br />
+Address: Hongshan, Wuchang, Wuhan 430071, China Tel:027-87197000<br />
+
+</div>
+</body>
+</html>

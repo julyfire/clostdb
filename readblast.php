@@ -1,0 +1,188 @@
+<?php
+include("template.php");
+include("parseBlast.php");
+############################## parse BLAST results ##################################
+$jobtitle=$_GET['JOBTITLE'];
+$infile=$_GET['RESULT'];
+$blast=parseBlast($infile);
+
+PHP_VERSION < '4.2.0' && mt_srand((double)microtime() * 1000000);
+$jsonfile="temp/blast.json".date("YmdHis").mt_rand(1000,9999);
+$jsonfile2="temp/blast.json2".date("YmdHis").mt_rand(1000,9999);
+file_put_contents($jsonfile,plotdata($blast,50));
+file_put_contents($jsonfile2,plotdata2($blast,250));
+######################################################################################
+
+
+?>
+
+<?php echoHtmlHead("BLAST result"); ?>
+<script type="text/javascript" src="js/scrolltop.js"></script>
+<link rel="stylesheet" type="text/css" href="css/lrtk.css">
+<script type="text/javascript" src="js/blast_results.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/blast_results.css" media="all" />
+<script type="text/javascript" src="js/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/d3.js"></script>
+<script type="text/javascript" src="js/d3.geom.js"></script>
+<script type="text/javascript" src="js/d3.layout.js"></script>
+<script type="text/javascript" src="js/json_parse.js"></script>
+<script type="text/javascript" src="js/blast_plot.js"></script>
+<?php echo "<script type=\"text/javascript\">
+		var seqlen=".$blast['query_seq_length'].";
+		var jfile='".$jsonfile."';
+                var jfile2='".$jsonfile2."';
+		</script>"; 
+?>
+<style type="text/css">
+@import url("js/jquery-ui/jquery-ui.css");
+.ui-widget {
+                        font: 14px Helvetica Neue;
+                } 
+
+#blast_plot{
+	position:relative;
+}
+.chart{
+	font: 10px sans-serif;
+	border:1px solid #888;
+}
+
+#info{
+	display:none;
+	position:absolute;
+	z-index:100;
+	border:1px solid #555;
+	background-color:#eee;
+	padding:2px 5px;
+	font:12px sans-serif;
+}
+
+circle.node {
+  			stroke: #fff;
+  			stroke-width: 1.5px;
+  			fill:blue;
+  			cursor: pointer;
+		}
+		line.link {
+  			stroke: #999;
+  			stroke-opacity: .6;
+		}
+		.slide{
+			width: 900px;
+			margin-bottom: 10px;
+		}
+</style>
+<?php echoPageHeader(); ?>
+
+<!-- ================================== main content start ===================================== -->
+<div id="main">
+	<div id="jobtitle"><?php echo $jobtitle; ?></div>
+
+	<div id="blast_summary">
+		<div id="query_summary">
+			<dl><dt>Query ID</dt><dd><?php echo $blast['query_seq_name']; ?></dd>
+		 		<dt>Query Length</dt><dd><?php echo $blast['query_seq_length']; ?></dd>
+			</dl>
+		</div>
+		<div id="db_summary">
+			<dl><dt>Database Name</dt><dd><?php echo $blast['db_name']; ?></dd>
+		 		<dt>Description</dt><dd><?php echo $blast['db_desc']; ?></dd>
+			</dl>
+		</div>
+	</div>
+	
+	<div id="blast_title"><a href="#" onclick="toggle(['blast_plot'])">Graphic Summary</a></div>
+	<div id="blast_plot" class="blast_panel expand">
+		<script type="text/javascript">showPlot(jfile,document.getElementById("blast_plot"));</script>
+	</div>
+	<div id="blast_plot2" class="blast_panel expand">
+		<div id="ball"></div>
+		<script type="text/javascript">
+//======================================================
+showPlot2(jfile2,"#ball");
+//=====================================================
+		</script>
+		<div id="score-pan" class="slide">Max Score: <span></span><div id="score"></div></div> 
+   		<div id="e-pan" class="slide">Min E-value: <span></span><div id="e"></div></div>
+    		<div id="coverage-pan" class="slide">Hit Coverage: <span></span><div id="coverage"></div></div>
+    		<div id="acc"></div>
+		<span class="button" onclick="getSeq()">get selected sequences</span>
+	</div>
+	<div class="blast_title"><a href="#" onclick="toggle(['blast_brief'])">Descriptions</a></div>
+	<div id="blast_brief" class="blast_panel expand">
+	<table class="brief">
+		<caption>Sequences producing significant alignments:</caption>
+		<thead>
+			<tr class="first">
+				<th>Accession</th>
+				<th>Description</th>
+				<th>Max Score</th>
+				<th>E value</th>
+				<th>Identity</th>
+				<th>Coverage</th>			
+			</tr>		
+		</thead>
+		<tbody>
+		<?php 
+			$i=0;
+			foreach($blast['hit'] as $hit) {
+//print_r($hit);
+				echo "<tr>\n";
+				echo "<td class=\"l\"><a href=\"detail.php?acc=".$hit['acc']."\" title=\"Show report for ".$hit['acc']."\" onclick='loading()'>".$hit['acc']."</a></td>\n";
+				echo "<td class=\"l\">".substr($hit['desc'],0,65)."...</td>\n";
+				echo "<td><a href=\"#$i\" title=\"Show alignment for ".$hit['acc']."\">".$hit['hsp'][0]['score']."</a></td>\n";
+				echo "<td>".$hit['hsp'][0]['e']."</td>\n";
+				echo "<td>".$hit['hsp'][0]['identity']."</td>\n";
+				echo "<td>".round(coverage($hit)/$blast['query_seq_length']*100,2)."%</td>\n";
+
+				echo "</tr>\n";
+				$i++;	
+			}
+		?>		
+			<tr>
+				<td></td>			
+			</tr>		
+		</tbody>
+	</table>
+	</div>
+
+	<div class="blast_title"><a href="#" onclick="toggle(['blast_detail'])">Alignments</a></div>
+	<div id="blast_detail" class="blast_panel">
+	<div id='handle'>
+	<input type="checkbox" onclick="selectBox(this,'getSeqAlignment')">select all
+	<span class="button" onclick="getSeq()">get selected sequences</span>
+	<!--<span class="button">make tree</span>-->
+	</div>
+	<form name="getSeqAlignment" method="post" action="search2.php">
+	
+	<?php 
+	$i=0;	
+	foreach($blast['result'] as $hit) {
+		echo "<div class='aln'><a name='".$blast['hit'][$i]['acc']."'><pre>\n";
+		echo "&gt;<input name=\"accs[]\" id=\"".$blast['hit'][$i]['acc']."\" value=\"".$blast['hit'][$i]['acc']."\" type=\"checkbox\">";
+		echo "<a title=\"Show report for ".$blast['hit'][$i]['acc']."\" href=\"detail.php?acc=".$blast['hit'][$i]['acc']."\" onclick='loading()'>".$blast['hit'][$i]['acc']."</a><a name=\"$i\"></a>";
+		echo substr($hit, strpos($hit," "));
+		echo "</pre></div>\n";
+		$i++;
+	}
+	?>
+		<input type="hidden" name="fromblast" value="fromblast">
+	</form>
+	
+	</div>
+	
+	<div id="blast_info" class="blast_panel expand">
+		<pre>
+		<?php
+			echo $info;
+		?>
+		</pre>
+	</div>
+</div>
+<div id="info"></div>
+<div style="DISPLAY: none" id='goTopBtn'><img border=0 src="images/lanren_top.jpg"></div>
+<script type="text/javascript">goTopEx();</script>
+<!-- =================================== main content end ======================================== -->
+
+<?php echoPageFooter(); ?>

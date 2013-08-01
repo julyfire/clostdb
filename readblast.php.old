@@ -1,0 +1,185 @@
+<?php
+include("template.php");
+############################## parse BLAST results ##################################
+$jobtitle=$_GET['JOBTITLE'];
+$infile=$_GET['RESULT'];
+$f=fopen($infile,"r");
+
+$queryname='';
+$querylength='';
+$dbname='';
+$dbdesc='';
+$brief=array();
+$detail=array();
+$info='';
+
+$i=0;
+while(!feof($f)){
+	$i++;
+	$line=rtrim(fgets($f));
+	//echo strlen($line)."<br>";
+	if(strpos($line,"Query=")===0){
+		$queryname=substr($line,6);
+	}
+	elseif(preg_match("/^ +\((\d+) letters\)/",$line,$m)) {
+		$querylength=$m[1];
+	}
+	elseif(strpos($line,"Database")===0){
+		$dbname=substr($line,10);
+		$line=rtrim(fgets($f));
+		$dbdesc=ltrim($line);
+	}
+	
+	elseif(strpos($line,"Sequences producing significant alignments:")===0){
+		fgets($f);
+		$line=rtrim(fgets($f));
+		for($j=0;strlen($line)>0;$i++,$j++){
+			$line=preg_replace("/\s+/"," ",$line);
+			preg_match("/^(.+?) (.+) (\d+) (\S+)/",$line,$m);
+			array_shift($m);
+			if(preg_match("/^.+\|(.+)\.\d\|.*/",$m[0],$a))
+				$m[0]=$a[1];
+			$brief[$j]=$m;
+			$line=rtrim(fgets($f));
+		}
+	}
+	
+	if(substr($line,0,1)==">"){
+		$result='';
+		$hit=array();
+		//$hit[0] stores accession number 
+		//$hit[0]=substr($line,1,strpos($line," "));
+		if(preg_match("/^>.+\|(.+)\.\d\|.*/",$line,$m))
+			$hit[0]=$m[1];
+		for($j=0;;){
+			if(substr($line,0,1)==">" && $result){
+				$hit[1]=$result;
+				$detail[$j]=$hit;
+				$hit=array();
+				$result='';
+				if(preg_match("/^>.+\|(.+)\.\d\|.*/",$line,$m))
+					$hit[0]=$m[1];
+				$j++;	
+			}
+			if(strpos($line,"Database")>0) {
+				$aln[$j]=$result;
+				break;
+			}
+			$result.=$line;
+			$hit[1]=$result;
+			$detail[$j]=$hit;
+			$line=(fgets($f));
+		}
+	
+	}
+	
+	if(strpos($line,"Database")>0){
+		while(!feof($f)){
+			$info.=$line;
+			$line=(fgets($f));
+		}
+	}
+}
+fclose($f);
+#unlink($infile);
+//print_r($detail);
+######################################################################################
+
+
+?>
+
+<?php echoHtmlHead("BLAST result"); ?>
+<script type="text/javascript" src="js/scrolltop.js"></script>
+<link rel="stylesheet" type="text/css" href="css/lrtk.css">
+<script type="text/javascript" src="js/blast_results.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/blast_results.css" media="all" />
+<?php echoPageHeader(); ?>
+
+<!-- ================================== main content start ===================================== -->
+<div id="main">
+	<div id="jobtitle"><?php echo $jobtitle; ?></div>
+
+	<div id="blast_summary">
+		<div id="query_summary">
+			<dl><dt>Query ID</dt><dd><?php echo $queryname; ?></dd>
+		 		<dt>Query Length</dt><dd><?php echo $querylength; ?></dd>
+			</dl>
+		</div>
+		<div id="db_summary">
+			<dl><dt>Database Name</dt><dd><?php echo $dbname; ?></dd>
+		 		<dt>Description</dt><dd><?php echo $dbdesc; ?></dd>
+			</dl>
+		</div>
+	</div>
+	<div class="blast_title"><a href="#" onclick="toggle(['blast_brief'])">Descriptions</a></div>
+	<div id="blast_brief" class="blast_panel expand">
+	<table class="brief">
+		<caption>Sequences producing significant alignments:</caption>
+		<thead>
+			<tr class="first">
+				<th>Accession</th>
+				<th>Description</th>
+				<th>Score(bits)</th>
+				<th>E value</th>			
+			</tr>		
+		</thead>
+		<tbody>
+		<?php 
+			$i=100;
+			foreach($brief as $hit) {
+				echo "<tr>\n";
+				echo "<td class=\"l\"><a href=\"detail.php?acc=".$hit[0]."\" title=\"Show report for ".$hit[0]."\" onclick='loading()'>".$hit[0]."</a></td>\n";
+				echo "<td class=\"l\">".$hit[1]."</td>\n";
+				echo "<td><a href=\"#$i\" title=\"Show alignment for ".$hit[0]."\">".$hit[2]."</a></td>\n";
+				echo "<td>".$hit[3]."</td>\n";
+				echo "</tr>\n";
+				$i++;	
+			}
+		?>		
+			<tr>
+				<td></td>			
+			</tr>		
+		</tbody>
+	</table>
+	</div>
+
+	<div class="blast_title"><a href="#" onclick="toggle(['blast_detail'])">Alignments</a></div>
+	<div id="blast_detail" class="blast_panel">
+	<div id='handle'>
+	<input type="checkbox" onclick="selectBox(this,'getSeqAlignment')">select all
+	<span class="button" onclick="getSeq()">get selected sequences</span>
+	<!--<span class="button">make tree</span>-->
+	</div>
+	<form name="getSeqAlignment" method="post" action="search2.php">
+	
+	<?php 
+	$i=100;	
+	foreach($detail as $hit) {
+		echo "<div class='aln'><pre>\n";
+		echo "&gt;<input name=\"accs[]\" value=\"".$hit[0]."\" type=\"checkbox\">";
+		echo "<a title=\"Show report for ".$hit[0]."\" href=\"detail.php?acc=".$hit[0]."\" onclick='loading()'>".$hit[0]."</a><a name=\"$i\"></a>";
+		echo substr($hit[1], strpos($hit[1]," "));
+		echo "</pre></div>\n";
+		$i++;
+	}
+	?>
+		<input type="hidden" name="fromblast" value="fromblast">
+	</form>
+	
+	</div>
+	
+	<div id="blast_info" class="blast_panel expand">
+		<pre>
+		<?php
+			echo $info;
+		?>
+		</pre>
+	</div>
+</div>
+
+<div style="DISPLAY: none" id='goTopBtn'><img border=0 src="images/lanren_top.jpg"></div>
+<script type="text/javascript">goTopEx();</script>
+<!-- =================================== main content end ======================================== -->
+
+<?php echoPageFooter(); ?>
